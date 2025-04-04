@@ -14,12 +14,16 @@ def inicio():
     ''' Página de inicio de la aplicación '''
     return render_template('index.html')
 
-@app.route('/titulo', methods=['GET','POST'])
+@app.route('/titulo', methods =['GET','POST'])
 def busqueda_titulo():
     ''' Página de búsqueda por título '''
-    titulo = request.form['titulo']
-    resultado = fn.busca_en_diccionario(diccionario_titulos, titulo)
-    return render_template('resultado.html', lista_libros=resultado)
+    resultado = []
+    if request.method == 'POST':
+        titulo = request.form['titulo']
+        resultado = fn.busca_en_diccionario(diccionario_titulos, titulo)
+        print(titulo)
+        print(resultado)
+    return render_template('titulo.html', lista_libros=resultado)
 
 if __name__ == '__main__':
     app.run(debug=True)
