@@ -1,5 +1,4 @@
-''' Programa principal de MovieDB '''
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, url_for, render_template, redirect, session
 import os
 import random
 import movie_classes as mc
@@ -53,7 +52,8 @@ def login():
             return redirect(url_for('index'))
         else:
             error = 'Usuario o contraseña incorrectos'
-            return render_template('login.html'))
+            return render_template('login.html', error=error)
     return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
