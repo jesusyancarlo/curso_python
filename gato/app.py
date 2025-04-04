@@ -28,6 +28,7 @@ def main():
             print('Empate')
             X["E"] += 1
             O["E"] += 1
+        tablero.actualiza_score(score,g)
 
 if __name__ == '__main__':
     main()
